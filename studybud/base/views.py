@@ -10,7 +10,6 @@ rooms: list[dict] = [
 
 def home(request: HttpRequest) -> HttpResponse:
     return render(request, 'base/home.html', {'rooms': rooms})
-    
 
 def room(request: HttpRequest, pk: str) -> HttpResponse:
     room: Optional[dict] = None
