@@ -1,4 +1,3 @@
-from ast import For, mod
 from django.db import models
 
 class User(models.Model):
@@ -8,7 +7,7 @@ class User(models.Model):
     password = models.CharField('password', max_length=256, null=False, blank=False)
     age = models.IntegerField('age', default=0)
     blog_count = models.IntegerField('blog_count', default=0)
-
+    
     class Meta:
         db_table = 'User'
 
@@ -20,13 +19,13 @@ class User(models.Model):
         return self.first_name + " " + self.last_name
     
 
-class Blog(models.Model):
-    
+class Blog(models.Model):    
     blogger = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     blog_text = models.TextField('blog_text')
     publication_date = models.DateTimeField('publication_date')
     like_count = models.IntegerField('like_count', default=0)
     comment_count = models.IntegerField('comment_count', default=0)
+    deleted = models.BooleanField('deleted', default=False)
 
     class Meta:
         db_table = 'Blog'
